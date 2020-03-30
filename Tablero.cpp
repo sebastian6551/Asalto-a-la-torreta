@@ -1,5 +1,6 @@
 #include "Tablero.h"
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 Tablero::Tablero(){
@@ -16,19 +17,19 @@ void Tablero::configurarTablero(std::string rutaArchivo)
   string datos;
 
   int numero;
-  int espaciosHorizontales = 0;
-  int x = 0;
-  while(espaciosHorizontales < 10)
+  int espaciosVerticales = 0;
+  int y = 0;
+  while(espaciosVerticales < 10)
     {
-          for(int y = 0; y < 10; y++)
+          for(int x = 0; x < 10; x++)
           {
           abrir>>datos;
           stringstream recibe(datos);
           recibe>>numero;
           tablero[x][y] = numero;
           }
-          x++;
-          espaciosHorizontales++;
+          y++;
+          espaciosVerticales++;
     }
 }
 
@@ -37,17 +38,17 @@ Muestra el tablero.
 */
 void Tablero::imprimirTablero()
 {
-  int espaciosHorizontales = 0;
-  int x = 0;
-  while(espaciosHorizontales < 10)
+  int espaciosVerticales = 0;
+  int y = 0;
+  while(espaciosVerticales < 10)
     {
-          for(int y = 0; y < 10; y++)
+          for(int x = 0; x < 10; x++)
           {
           cout<<tablero[x][y]<<" ";
           }
           cout<<endl;
-          x++;
-          espaciosHorizontales++;
+          y++;
+          espaciosVerticales++;
     }
 }
 
