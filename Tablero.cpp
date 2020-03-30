@@ -10,45 +10,47 @@ Tablero::~Tablero(){
 }
 
 /*Este método guarda el valor de cada posición de la tabla 
-que está en un archivo .txt en tablero*/
+que está en un archivo .txt en tablero.
+Primero guarda horizontalmente por lo que x va aumentando hasta llegar a 10
+y luego lo hace verticalmente hasta que llega a 10 al ser el tablero 10x10.
+*/
 void Tablero::configurarTablero(std::string rutaArchivo)
 {
   ifstream abrir(rutaArchivo.c_str());
   string datos;
 
   int numero;
-  int espaciosVerticales = 0;
   int y = 0;
-  while(espaciosVerticales < 10)
+  while(y < 10)
     {
-          for(int x = 0; x < 10; x++)
-          {
+      for(int x = 0; x < 10; x++)
+        {
           abrir>>datos;
           stringstream recibe(datos);
           recibe>>numero;
           tablero[x][y] = numero;
-          }
-          y++;
-          espaciosVerticales++;
+        }
+      y++;
     }
 }
 
 /*
-Muestra el tablero.
+Muestra el tablero recorriendo todas las posiciones en tablero[x][y]
+primero lo hace horizontalmente y salta una linea al llegar a 10 y
+así sucesivamente hasta que haya completado 10 saltos de línea que
+equivale a las posiciones verticalmente. 
 */
 void Tablero::imprimirTablero()
 {
-  int espaciosVerticales = 0;
   int y = 0;
-  while(espaciosVerticales < 10)
+  while(y < 10)
     {
-          for(int x = 0; x < 10; x++)
-          {
+      for(int x = 0; x < 10; x++)
+        {
           cout<<tablero[x][y]<<" ";
-          }
-          cout<<endl;
-          y++;
-          espaciosVerticales++;
+        }
+        cout<<endl;
+      y++;
     }
 }
 
