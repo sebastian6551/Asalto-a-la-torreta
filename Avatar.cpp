@@ -43,12 +43,12 @@ void Avatar::Definirclase(int x)
 {
 if (x==1)//Luchador
 {
- Avatar::Luchador();
+ Luchador();
 }else if (x==2)//Tirador
  {
-  Avatar::Tirador();
+ Tirador();
  }else if (x==3)//Mago
   {
-   Avatar::Mago();
+ Mago();
   } 
 }
