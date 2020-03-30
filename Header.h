@@ -1,16 +1,17 @@
 #ifndef _HEADER_H
 #define _HEADER_H
-
-#include "Torreta.h"
-#include "Tablero.h"
-#include "Avatar.h"
+#include <iostream>
 using namespace std;
 
-class Header{
+class Header
+{
   public:
   Header();
-  void GUI();
+  ~Header();
 
-}
+  void settings();
+  void leerArchivo(string rutaArchivo);
+  void elegirOpcion(int x);
+};
 
 #endif
