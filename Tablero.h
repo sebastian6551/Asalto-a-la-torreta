@@ -4,8 +4,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include<stack>
-#include<stdlib.h>
+#include <stack>
+#include <stdlib.h>
 #include <sstream> // string stream
 #include <time.h> 
 using namespace std;
@@ -18,7 +18,8 @@ class Tablero
   
   Tablero();
   ~Tablero();
-  void leerArchivo();
+
+  void configurarTablero(string rutaArchivo);
   void imprimirTablero();
   int obtenerElemento(int x, int y);
   void modificarElemento(int x, int y, int valor);
