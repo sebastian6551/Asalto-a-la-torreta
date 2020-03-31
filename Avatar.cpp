@@ -1,5 +1,6 @@
 #include "Avatar.h"
 #include <iostream>
+using namespace std;
 
 Avatar::Avatar()
 {
@@ -11,44 +12,70 @@ Avatar::~Avatar()
 
 }
 
-//metodo para definir el objeto con los atributos de un luchador 
-void Avatar::Luchador()
+string Avatar::opcionesAvatar()
 {
-id='1';
-vida=4;
-poder=0.7; 
-mana=0.6; 
+  cout
+  <<"Escoja un avatar de los siguientes:"<<endl
+  <<"1. Luchador."<<endl
+  <<"2. Tirador."<<endl
+  <<"3. Mago."<<endl;
+  int x;
+  cin >>x;
+  definirClase(x);
+  return "";
+}
+
+
+//metodo para definir el objeto con los atributos de un luchador 
+void Avatar::luchador()
+{
+  id = 1;
+  vida = 4;
+  poder = 0.7; 
+  mana = 0.6; 
 }
 
 //metodo para definir el objeto con los atributos de un Tirador
-void Avatar::Tirador()
+void Avatar::tirador()
 {
-id='2';
-vida=3;
-poder=1; 
-mana=0.3; 
+  id = 2;
+  vida = 3;
+  poder = 1; 
+  mana = 0.3; 
 }
 
 //metodo para definir el objeto con los atributos de un Mago
-void Avatar::Mago()
+void Avatar::mago()
 {
-id='3';
-vida=5;
-poder=0.2; 
-mana=1; 
+  id = 3;
+  vida = 5;
+  poder = 0.2; 
+  mana = 1; 
 }
 
 //Metodo que dependiendo del valor de x definira el objeto con algunos de los tipos de avatar
-void Avatar::Definirclase(int x)
+void Avatar::definirClase(int x)
 {
-if (x==1)//Luchador
-{
- Luchador();
-}else if (x==2)//Tirador
- {
- Tirador();
- }else if (x==3)//Mago
+  switch (x)
   {
- Mago();
-  } 
+    case 1:
+    cout
+    <<"Has seleccionado luchador.";
+    luchador();
+    break;
+    case 2:
+    cout
+    <<"Has seleccionado tirador.";
+    tirador();
+    break;
+    case 3:
+    cout
+    <<"Has seleccionado mago.";
+    mago();
+    break;
+    default:
+    cout
+    <<"Intente de nuevo:"<<endl
+    <<opcionesAvatar();
+  }
 }

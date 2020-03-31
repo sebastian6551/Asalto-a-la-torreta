@@ -20,3 +20,4 @@ int Torreta::estadoDeLaTorreta()
 {
   return vidaTorreta;
 }
+

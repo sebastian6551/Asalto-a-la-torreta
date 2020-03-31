@@ -1,20 +1,24 @@
 #ifndef _AVATAR_H_
 #define _AVATAR_H_
+#include <iostream>
+using namespace std;
 
 class Avatar 
 {
 public:
 Avatar();
 ~Avatar();
-void Definirclase(int x); 
-void Luchador();
-void Tirador();
-void Mago();
+
+string opcionesAvatar();
+void definirClase(int x); 
+void luchador();
+void tirador();
+void mago();
 
 private:
-char id;
+int id;
 float vida;
 float poder; 
-float mana ;
+float mana;
 };
 #endif 
