@@ -14,9 +14,10 @@ void definirClase(int x);
 void luchador();
 void tirador();
 void mago();
+string getid();
 
 private:
-int id;
+string id;
 float vida;
 float poder; 
 float mana;

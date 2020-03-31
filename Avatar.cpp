@@ -29,7 +29,7 @@ string Avatar::opcionesAvatar()
 //metodo para definir el objeto con los atributos de un luchador 
 void Avatar::luchador()
 {
-  id = 1;
+  id = "Luchador";
   vida = 4;
   poder = 0.7; 
   mana = 0.6; 
@@ -38,7 +38,7 @@ void Avatar::luchador()
 //metodo para definir el objeto con los atributos de un Tirador
 void Avatar::tirador()
 {
-  id = 2;
+  id = "Tirador";
   vida = 3;
   poder = 1; 
   mana = 0.3; 
@@ -47,7 +47,7 @@ void Avatar::tirador()
 //metodo para definir el objeto con los atributos de un Mago
 void Avatar::mago()
 {
-  id = 3;
+  id = "Mago";
   vida = 5;
   poder = 0.2; 
   mana = 1; 
@@ -60,17 +60,17 @@ void Avatar::definirClase(int x)
   {
     case 1:
     cout
-    <<"Has seleccionado luchador.";
+    <<"Has seleccionado luchador."<<endl;
     luchador();
     break;
     case 2:
     cout
-    <<"Has seleccionado tirador.";
+    <<"Has seleccionado tirador."<<endl;
     tirador();
     break;
     case 3:
     cout
-    <<"Has seleccionado mago.";
+    <<"Has seleccionado mago."<<endl;
     mago();
     break;
     default:
@@ -78,4 +78,9 @@ void Avatar::definirClase(int x)
     <<"Intente de nuevo:"<<endl
     <<opcionesAvatar();
   }
+}
+
+string Avatar::getid()
+{
+  return id;
 }

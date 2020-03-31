@@ -23,7 +23,7 @@ class Tablero
   void imprimirTablero();
   int obtenerElemento(int x, int y);
   void modificarElemento(int x, int y, int valor);
-
+  void guardar();
   private:
   int tablero[SIZE][SIZE];
 };
