@@ -67,22 +67,19 @@ void Tablero::modificarElemento(int x, int y, int valor)
   tablero[x-1][y-1] = valor;
 }
 
+//Guarda el campo de una partida anterior
 void Tablero::guardar()
 {
-remove ("PruebaCargarPartida");
-
-ofstream salida("PruebaCargarPartida");
-
-int i=0;
-int j=0;
-
-  while(j<10)
-  {i=0;
-  while(i<10)
-  { salida<< tablero[i][j]<<" ";
-  i++;}
-  salida<<endl;
-  j++;
-  }
+  remove ("PruebaCargarPartida.txt");
+  ofstream salida("PruebaCargarPartida.txt");
+  int y = 0;
+  while(y < 10)
+    {
+      for(int x = 0; x < 10; x++)
+        {
+          salida<<tablero[x][y]<<" ";
+        }
+        salida<<endl;
+      y++;
+    }
 }
- 

@@ -10,6 +10,7 @@ class Header
   ~Header();
 
   void settings();
+  void settingsNoTitle();
   void leerArchivo(string rutaArchivo);
   void elegirOpcion(int x);
 };
