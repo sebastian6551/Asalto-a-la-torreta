@@ -57,11 +57,7 @@ void Header::elegirOpcion(int x)
     break;
     case 2:
       {
-        cout
-        <<"Escriba el archivo .txt donde está la partida:"<<endl;
-        string rutaArchivo;
-        cin>>rutaArchivo;
-        tabla.configurarTablero(rutaArchivo);
+        tabla.configurarTablero("PruebaCargarPartida.txt");
         cout<<endl;
         tabla.imprimirTablero();
       }
