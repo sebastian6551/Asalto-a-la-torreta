@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 using namespace std;
+#include <string>
 
 Tablero::Tablero(){
 }
@@ -58,13 +59,13 @@ void Tablero::imprimirTablero()
 Sirve para conocer la ubicación de los jugadores y la torreta.*/
 int Tablero::obtenerElemento(int x, int y)
 {
-  return tablero[x-1][y-1];
+  return tablero[x][y];
 }
 
 /*Modifica el valor del elemento que este en la coordenada [x][y] del tablero de juego.*/
 void Tablero::modificarElemento(int x, int y, int valor) 
 {
-  tablero[x-1][y-1] = valor;
+  tablero[x][y] = valor;
 }
 
 //Guarda el campo de una partida anterior
@@ -83,3 +84,69 @@ void Tablero::guardar()
       y++;
     }
 }
+
+void Tablero::moverse()
+{
+  for(int i=0;i<5;i++)
+  {
+  if(i%2==0)
+  {cout<<"mover Ejercito 1:";
+   movimiento(1);
+   imprimirTablero();} 
+   if(i%2==1)
+  {cout<<"mover Ejercito 2:";
+   movimiento(2);
+   imprimirTablero();}  
+  }
+}
+
+void Tablero::movimiento(int w)
+{
+int x1;
+int y1;
+int y=0;
+string direccion;
+while(y < 10)
+{
+ for(int x = 0; x < 10; x++)
+  {
+   if((obtenerElemento(x,y))==w)
+    {
+     x1=x;
+     y1=y;
+    }
+  }
+  y++;
+ }
+ pasos(x1,y1,w);
+}
+
+void Tablero::pasos(int o,int i,int e)
+{ string direccion;
+cout<<" ingresar direccion en minusculas"<<endl;
+     cin>>direccion;
+     if((direccion=="arriba")&&(i>0))//la casilla esta vacia?
+     {
+      modificarElemento(o,i,0);
+      modificarElemento(o,(i-1),e); 
+     }else
+     if
+     ((direccion=="abajo")&&(i<9))
+     {
+      modificarElemento(o,i,0);
+      modificarElemento(o,(i+1),e); 
+     }else
+     if
+     ((direccion=="derecha")&&(o<9))
+     {
+      modificarElemento(o,i,0);
+      modificarElemento((o+1),i,e); 
+     }else
+     if
+     ((direccion=="izquierda")&&(o>0))
+     {
+      modificarElemento(o,i,0);
+      modificarElemento((o-1),i,e); 
+     }else {pasos(o,i,e);}
+}
+

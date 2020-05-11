@@ -9,6 +9,11 @@ class Header
   Header();
   ~Header();
 
+  //
+  //Ejercito EjercitoAtacante;
+  //Ejercito EjercitoDefensor;
+  //
+
   void settings();
   void settingsNoTitle();
   void leerArchivo(string rutaArchivo);

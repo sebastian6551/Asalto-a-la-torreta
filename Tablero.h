@@ -19,6 +19,12 @@ class Tablero
   Tablero();
   ~Tablero();
 
+  //
+  void movimiento(int w);
+  void moverse();
+  void pasos(int o,int i,int e);
+  //
+
   void configurarTablero(string rutaArchivo);
   void imprimirTablero();
   int obtenerElemento(int x, int y);

@@ -84,6 +84,9 @@ void Header::elegirOpcion(int x)
       {
       tabla.configurarTablero("Tablero.txt");
       tabla.imprimirTablero();
+      //
+      tabla.moverse();
+      //
       cout
       <<"¿Volver al menú?"<<endl
       <<"1. Sí"<<endl
