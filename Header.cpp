@@ -13,7 +13,7 @@ Header::~Header()
 
 }
 /*Creo objetos de las clases Tablero y Avatar para usar métodos de esas clases en el menú.*/
-Avatar menuAvatar;
+
 Tablero tabla; 
 Ejercito armada;
 
@@ -85,6 +85,8 @@ void Header::elegirOpcion(int x)
       tabla.configurarTablero("Tablero.txt");
       tabla.imprimirTablero();
       //
+      tabla.Reclutar();
+      tabla.Estado();
       tabla.moverse();
       //
       cout
@@ -130,9 +132,11 @@ void Header::elegirOpcion(int x)
     break;
     case 3:
       {
-        cout
+        /*cout
         <<menuAvatar.opcionesAvatar()<<endl;
         armada.composicion.push_back(menuAvatar);
+        settingsNoTitle();*/
+        cout<<"asi no funciona"<<endl;
         settingsNoTitle();
       }
     break;

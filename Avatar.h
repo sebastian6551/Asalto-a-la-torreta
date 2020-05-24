@@ -6,18 +6,25 @@ using namespace std;
 class Avatar 
 {
 public:
-Avatar();
+Avatar(int x);
 ~Avatar();
 
-string opcionesAvatar();
 void definirClase(int x); 
 void luchador();
 void tirador();
 void mago();
-string getid();
+void vacio();
+int getid();
+
+//
+float getpoder();
+float getmana();
+float getvida();
+void daño(int y);
+//
 
 private:
-string id;
+int id;
 float vida;
 float poder; 
 float mana;

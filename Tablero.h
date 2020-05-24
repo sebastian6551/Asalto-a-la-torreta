@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <sstream> // string stream
 #include <time.h> 
+#include "Avatar.h"
 using namespace std;
 
 class Tablero 
@@ -20,9 +21,29 @@ class Tablero
   ~Tablero();
 
   //
-  void movimiento(int w);
+  int Torre;
+  bool MuroNorte;
+  bool MuroSur;
+  bool MuroOeste;
+  bool MuroEste;
+
+  static const int SIZE1 = 12;
+
+  vector <Avatar*> Ejercito1;
+  vector <Avatar*> Ejercito2;
+
+  void movimiento(int w,int z);
   void moverse();
   void pasos(int o,int i,int e);
+
+  void asedio(int x, int y);
+
+  void Reclutar();
+  void Estado();
+
+  float poderEjercito(vector <Avatar*> Ejercito);
+  float manaEjercito(vector <Avatar*> Ejercito);
+  void Derrota(vector <Avatar*> Ejercito,int y);
   //
 
   void configurarTablero(string rutaArchivo);
@@ -31,6 +52,6 @@ class Tablero
   void modificarElemento(int x, int y, int valor);
   void guardar();
   private:
-  int tablero[SIZE][SIZE];
+  int tablero[SIZE][SIZE1];
 };
-#endif 
+#endif

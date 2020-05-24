@@ -4,7 +4,13 @@
 using namespace std;
 #include <string>
 
-Tablero::Tablero(){
+Tablero::Tablero()
+{
+  Torre=4;
+  MuroNorte=true;
+  MuroSur=true;
+  MuroOeste=true;
+  MuroEste=true;
 }
 
 Tablero::~Tablero(){
@@ -22,7 +28,7 @@ void Tablero::configurarTablero(std::string rutaArchivo)
 
   int numero;
   int y = 0;
-  while(y < 10)
+  while(y < 12)
     {
       for(int x = 0; x < 10; x++)
         {
@@ -74,7 +80,7 @@ void Tablero::guardar()
   remove ("PruebaCargarPartida.txt");
   ofstream salida("PruebaCargarPartida.txt");
   int y = 0;
-  while(y < 10)
+  while(y < 12)
     {
       for(int x = 0; x < 10; x++)
         {
@@ -85,22 +91,30 @@ void Tablero::guardar()
     }
 }
 
+//Se encarga de repartir los turnos y dejar mover a los ejercitos mientras la torre esta entera
 void Tablero::moverse()
-{
-  for(int i=0;i<5;i++)
+{ int i=0;
+  while(Torre>0)
   {
   if(i%2==0)
   {cout<<"mover Ejercito 1:";
-   movimiento(1);
-   imprimirTablero();} 
-   if(i%2==1)
+   movimiento(1,1);
+   imprimirTablero();
+   movimiento(8,2);}
+
+  /* if(i%2==1)
   {cout<<"mover Ejercito 2:";
-   movimiento(2);
-   imprimirTablero();}  
+   movimiento(2,1);
+   imprimirTablero();
+   movimiento(8,2);}
+  */
+   i++;  
   }
+  cout<<"se cayo la torre"<<endl;
 }
 
-void Tablero::movimiento(int w)
+//busca las coordenadas de un entero en la matriz y lo usa en otro metodo
+void Tablero::movimiento(int w,int z)
 {
 int x1;
 int y1;
@@ -118,35 +132,148 @@ while(y < 10)
   }
   y++;
  }
+ if(z==1)
+ {
  pasos(x1,y1,w);
+ }else if (z==2)
+ {
+   asedio(x1,y1);
+ }
 }
 
+//metodo que recibe la ubicacion y un elemento para moverlo en la matriz tablero 
 void Tablero::pasos(int o,int i,int e)
 { string direccion;
-cout<<" ingresar direccion en minusculas"<<endl;
+cout<<" ingresar direccion w,a,s,d"<<endl;
      cin>>direccion;
-     if((direccion=="arriba")&&(i>0))//la casilla esta vacia?
+     if((direccion=="w")&&(i>0)&&(obtenerElemento(o,(i-1))==0))//la casilla esta vacia?
      {
       modificarElemento(o,i,0);
       modificarElemento(o,(i-1),e); 
      }else
      if
-     ((direccion=="abajo")&&(i<9))
+     ((direccion=="s")&&(i<9)&&(obtenerElemento(o,(i+1))==0))
      {
       modificarElemento(o,i,0);
       modificarElemento(o,(i+1),e); 
      }else
      if
-     ((direccion=="derecha")&&(o<9))
+     ((direccion=="d")&&(o<9)&&(obtenerElemento((o+1),i)==0))
      {
       modificarElemento(o,i,0);
       modificarElemento((o+1),i,e); 
      }else
      if
-     ((direccion=="izquierda")&&(o>0))
+     ((direccion=="a")&&(o>0)&&(obtenerElemento((o-1),i)==0))
      {
       modificarElemento(o,i,0);
       modificarElemento((o-1),i,e); 
      }else {pasos(o,i,e);}
 }
 
+//recibe las coordenadas de la torre (8) y revisa si el ejercito atacante esta atacando una de sus murallas
+void Tablero::asedio(int x, int y)
+{
+ if((obtenerElemento((x+1),y)==1) && (MuroEste==true))
+ { 
+  cout<<"muro este destruido"<<endl;
+  MuroEste=false;
+  Torre=Torre-1;
+ }
+ if((obtenerElemento((x-1),y)==1) && (MuroOeste==true))
+ { 
+  cout<<"muro oeste destruido"<<endl;
+  MuroOeste=false;
+  Torre=Torre-1;
+ }
+ if((obtenerElemento(x,(y+1))==1) && (MuroSur==true))
+ { 
+  cout<<"muro sur destruido"<<endl;
+  MuroSur=false;
+  Torre=Torre-1;
+ }
+ if((obtenerElemento(x,(y-1))==1) && (MuroNorte==true))
+ { 
+  cout<<"muro norte destruido"<<endl;
+  MuroNorte=false;
+  Torre=Torre-1;
+ }
+}
+
+//metodo que se encarga de construir los ejercitos en base de los datos en el archivo de inicio
+void Tablero::Reclutar()
+{
+ int i=0;    
+ while(obtenerElemento(i,10)!=0)
+ {
+ Ejercito1.push_back(new Avatar(obtenerElemento(i,10)));
+ i++;
+ }
+
+ i=0;
+ while(obtenerElemento(i,11)!=0)
+ {
+ Ejercito2.push_back(new Avatar(obtenerElemento(i,11)));
+ i++;
+ }
+}
+
+//metodo para verificar las unidades de cada ejercito 
+void Tablero::Estado()
+{
+ for (auto i = Ejercito1.begin(); i != Ejercito1.end(); ++i) 
+  {
+  cout<<(*i)->getid(); 
+  } 
+
+  cout<<endl;
+
+for (auto i = Ejercito2.begin(); i != Ejercito2.end(); ++i) 
+  {
+  cout<<(*i)->getid(); 
+  } 
+
+  cout<<endl;
+}
+
+//metodo para sacar el total de "poder" del ejercito ingresado
+float Tablero::poderEjercito(vector <Avatar*> Ejercito)
+{
+  float Power;
+  for (auto i = Ejercito1.begin(); i != Ejercito1.end(); ++i)
+  {
+   Power=((*i)->getpoder()) + Power;
+  }
+  return Power;
+}
+
+//metodo para sacar el total de "mana" del ejercito ingresado
+float Tablero::manaEjercito(vector <Avatar*> Ejercito)
+{
+  float magic;
+  for (auto i = Ejercito1.begin(); i != Ejercito1.end(); ++i)
+  {
+   magic=((*i)->getmana()) + magic;
+  }
+  return magic;
+}
+
+//metodo que se encarga de aplicar el daño sufrido al miembro mas debil del ejercito y sacarlo en caso de que este muerto
+void Tablero::Derrota(vector <Avatar*> Ejercito,int y)
+{
+  auto loser = Ejercito.begin();
+  for (auto i = Ejercito1.begin(); i != Ejercito1.end(); ++i)
+  {
+    if ((*loser)->getvida()>(*i)->getvida())
+    {
+      loser=i;
+    }
+  }
+
+  (*loser)->daño(y);
+
+  if ((*loser)->getvida()<=0)
+  {
+    Ejercito.erase(loser);
+  }
+}
