@@ -9,6 +9,7 @@ public:
 Avatar(int x);
 ~Avatar();
 
+string opcionesAvatar();
 void definirClase(int x); 
 void luchador();
 void tirador();
@@ -29,4 +30,4 @@ float vida;
 float poder; 
 float mana;
 };
-#endif 
+#endif

@@ -25,5 +25,6 @@ Solo debe correr el programa.
 */
 
 Header titulo;
+titulo.leerArchivo("Titulo.txt");
 titulo.settings();
 }

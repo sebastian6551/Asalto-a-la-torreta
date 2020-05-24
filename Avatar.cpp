@@ -12,8 +12,20 @@ Avatar::~Avatar()
 
 }
 
+string Avatar::opcionesAvatar()
+{
+  cout
+  <<"Escoja un avatar de los siguientes:"<<endl
+  <<"1. Luchador."<<endl
+  <<"2. Tirador."<<endl
+  <<"3. Mago."<<endl;
+  int x;
+  cin >>x;
+  definirClase(x);
+  return "";
+}
 
-//metodo para definir el objeto con los atributos de un luchador 
+//Método para definir el objeto con los atributos de un luchador.
 void Avatar::luchador()
 {
   id = 1;
@@ -22,7 +34,7 @@ void Avatar::luchador()
   mana = 0.6; 
 }
 
-//metodo para definir el objeto con los atributos de un Tirador
+//Método para definir el objeto con los atributos de un Tirador.
 void Avatar::tirador()
 {
   id = 3;
@@ -31,7 +43,7 @@ void Avatar::tirador()
   mana = 0.3; 
 }
 
-//metodo para definir el objeto con los atributos de un Mago
+//Método para definir el objeto con los atributos de un Mago.
 void Avatar::mago()
 {
   id = 2;
@@ -40,24 +52,32 @@ void Avatar::mago()
   mana = 1; 
 }
 
-//Metodo que dependiendo del valor de x definira el objeto con algunos de los tipos de avatar
+//Método que dependiendo del valor de x definira el objeto con algunos de los tipos de avatar.
 void Avatar::definirClase(int x)
 {
   switch (x)
   {
     case 1:
+    cout
+    <<"Has seleccionado luchador."<<endl;
     luchador();
     break;
     case 2:
+    cout
+    <<"Has seleccionado tirador."<<endl;
     tirador();
     break;
     case 3:
+    cout
+    <<"Has seleccionado mago."<<endl;
     mago();
     break;
-    
+    default:
+    cout
+    <<"Intente de nuevo:"<<endl
+    <<opcionesAvatar();
   }
 }
-
 
 void Avatar::vacio()
 {
@@ -103,4 +123,4 @@ void Avatar::daño(int y)
       }
     break;
     }
-}    
+}

@@ -13,16 +13,14 @@ Header::~Header()
 
 }
 /*Creo objetos de las clases Tablero y Avatar para usar métodos de esas clases en el menú.*/
-
+Avatar menuAvatar(1);
 Tablero tabla; 
 Ejercito armada;
 
   
-
 void Header::settings()
 {
 //aquí se van añadiendo las opciones del menú
-    leerArchivo("Titulo.txt");
     cout 
     <<endl<<"¡Bienvenido a Code Legends!"<<endl
     << "Por favor escoja una opción:"<<endl
@@ -30,10 +28,11 @@ void Header::settings()
     << "2. Cargar partida." <<endl
     << "3. Elegir avatar." <<endl
     << "4. Mostrar estado del ejército."<<endl
-    << "5. Salir."<<endl;
+    << "5. Salir."<<endl
+    << "6. Instrucciones"<<endl;
     int x; 
     cin >>x;
-    if (x== 6 || x == 7)
+    if (x== 7 || x == 8)
       { 
         cout
         <<"Intente de nuevo:"<<endl;
@@ -55,10 +54,15 @@ void Header::settingsNoTitle()
     << "3. Elegir avatar." <<endl
     << "4. Mostrar estado del ejército."<<endl
     << "5. Salir."<<endl
-    << "6. Jugar"<<endl
-    << "7. Guardar partida"<<endl;
+    << "6. Instrucciones."<<endl
+    << "7. Jugar."<<endl
+    << "8. Guardar partida."<<endl;
     int x; 
     cin >>x;
+    if (x==7)
+    {
+      x = 1;
+    }
     elegirOpcion(x);
 }
 
@@ -74,6 +78,36 @@ void Header::leerArchivo(string rutaArchivo)
     }
 }
 
+string Header::instrucciones()
+{
+  cout
+  <<"Un ejército se moverá por todo el campo de juego para evadir o enfrentar una batalla;"<<endl
+  <<"cuando no pueda evadir la batalla, deberá enfrentarla haciendo uso de su ataque (poder) y defensa (maná)."<<endl 
+  <<"Cuando el ejército de ataque llegue a la Torreta, deberá destruirla golpeando cada uno de sus lados, así ganara el juego."<<endl<<endl
+  <<"El ejército se mueve con las letras:"<<endl<<endl
+  <<"                  | w = Arriba |"<<endl
+  <<"| a = Izquierda  ||  s = Abajo || d = Derecha |"<<endl<<endl;
+
+  cout
+  <<"¿Volver al menú?"<<endl
+  <<"1. Sí"<<endl
+  <<"2. No"<<endl;
+  int x;
+  cin>>x;
+    {
+     if (x == 1)
+      {
+        settingsNoTitle();
+      }
+     else if (x == 2)
+      {
+        cout<<" ";
+      }
+    }
+    return "";
+}
+
+
 /*Este método es llamado en settings() y permite realizar las 
 opciones que muestra el menú.*/
 void Header::elegirOpcion(int x)
@@ -84,11 +118,9 @@ void Header::elegirOpcion(int x)
       {
       tabla.configurarTablero("Tablero.txt");
       tabla.imprimirTablero();
-      //
-      tabla.Reclutar();
-      tabla.Estado();
+      tabla.reclutar();
+      tabla.estado();
       tabla.moverse();
-      //
       cout
       <<"¿Volver al menú?"<<endl
       <<"1. Sí"<<endl
@@ -132,11 +164,9 @@ void Header::elegirOpcion(int x)
     break;
     case 3:
       {
-        /*cout
+        cout
         <<menuAvatar.opcionesAvatar()<<endl;
         armada.composicion.push_back(menuAvatar);
-        settingsNoTitle();*/
-        cout<<"asi no funciona"<<endl;
         settingsNoTitle();
       }
     break;
@@ -150,15 +180,20 @@ void Header::elegirOpcion(int x)
     break;
     case 5:
       {
-        cout<<"";
+        cout<<"Gracias por jugar";
       }
     break;
     case 6:
       {
-        cout<<" ";
+        instrucciones();
       }
     break;
     case 7:
+      {
+    cout<<"";
+      }
+    break;
+    case 8:
       {
         tabla.guardar();
       }

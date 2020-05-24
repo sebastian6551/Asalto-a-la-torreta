@@ -9,15 +9,12 @@ class Header
   Header();
   ~Header();
 
-  //
-  //Ejercito EjercitoAtacante;
-  //Ejercito EjercitoDefensor;
-  //
-
   void settings();
   void settingsNoTitle();
   void leerArchivo(string rutaArchivo);
+  string instrucciones();
   void elegirOpcion(int x);
+
 };
 
 #endif

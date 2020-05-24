@@ -21,11 +21,11 @@ class Tablero
   ~Tablero();
 
   //
-  int Torre;
-  bool MuroNorte;
-  bool MuroSur;
-  bool MuroOeste;
-  bool MuroEste;
+  int torre;
+  bool muroNorte;
+  bool muroSur;
+  bool muroOeste;
+  bool muroEste;
 
   static const int SIZE1 = 12;
 
@@ -38,12 +38,12 @@ class Tablero
 
   void asedio(int x, int y);
 
-  void Reclutar();
-  void Estado();
+  void reclutar();
+  void estado();
 
   float poderEjercito(vector <Avatar*> Ejercito);
   float manaEjercito(vector <Avatar*> Ejercito);
-  void Derrota(vector <Avatar*> Ejercito,int y);
+  void derrota(vector <Avatar*> Ejercito,int y);
   //
 
   void configurarTablero(string rutaArchivo);
@@ -51,6 +51,7 @@ class Tablero
   int obtenerElemento(int x, int y);
   void modificarElemento(int x, int y, int valor);
   void guardar();
+  
   private:
   int tablero[SIZE][SIZE1];
 };
