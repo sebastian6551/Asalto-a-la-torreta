@@ -1,8 +1,8 @@
 # Asalto-a-la-torreta
 Proyecto final IPOO 2do semestre 2019.
 Integrantes:
-Juan Sebastián Estupiñán Cifuentes
-Wilian Fernando Quintero Tello
+Juan Sebastián Estupiñán Cifuentes,
+Wilian Fernando Quintero Tello,
 Johan David Pitto Calambás
 
 Descripción del proyecto:
