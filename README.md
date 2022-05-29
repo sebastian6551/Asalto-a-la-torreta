@@ -1,9 +1,9 @@
 # Asalto-a-la-torreta
 Proyecto final IPOO 2do semestre 2019.
 Integrantes:
-Juan Sebastián Estupiñán Cifuentes - 1924846
-Wilian Fernando Quintero Tello - 1841859
-Johan David Pitto Calambás - 1932739
+Juan Sebastián Estupiñán Cifuentes
+Wilian Fernando Quintero Tello
+Johan David Pitto Calambás
 
 Descripción del proyecto:
 Es un juego tipo competitivo, con un ejército de batalla conformado por n cantidad y 3 tipos de avatar que deberán luchar contra otro ejército. La dinámica del juego consiste en que un ejército trata de destruir la torreta y el otro ejército trata de protegerla.
